@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziemassvētku Dāvanu Spēle</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="p-4 max-w-4xl mx-auto">
+        <!-- Game Setup Screen -->
+        <div id="setupScreen" class="setup-screen">
+            <h1 class="text-3xl font-bold text-center mb-8 text-green-700">
+                Ziemassvētku Dāvanu Spēle
+            </h1>
+            <div class="card p-8">
+                <div class="space-y-4">
+                    <label class="block text-lg font-medium">
+                        Cik dalībnieki piedalīsies spēlē?
+                    </label>
+                    <input
+                        type="number"
+                        min="1"
+                        max="20"
+                        id="playerCount"
+                        class="w-full text-lg p-2 border rounded"
+                        placeholder="Ievadiet dalībnieku skaitu (1-20)"
+                    >
+                    <button 
+                        id="startGameBtn"
+                        class="w-full bg-green-600 hover:bg-green-700 text-white text-lg py-6 rounded"
+                        disabled
+                    >
+                        Sākt Spēli
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen" class="game-screen hidden">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="text-3xl font-bold text-green-700">
+                    Ziemassvētku Dāvanu Spēle
+                </h1>
+                <button 
+                    id="resetBtn"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded flex items-center"
+                >
+                    <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                    </svg>
+                    Sākt no jauna
+                </button>
+            </div>
+
+            <div id="currentTask" class="alert hidden mb-8 bg-red-100 p-4 rounded">
+                <div class="text-xl font-bold">Tavs uzdevums:</div>
+                <div id="taskText" class="text-lg"></div>
+            </div>
+
+            <div id="giftsGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Gifts will be added here dynamically -->
+            </div>
+        </div>
+
+        <!-- Congratulations Modal -->
+        <div id="congratsModal" class="modal hidden">
+            <div class="modal-content card p-8 max-w-md text-center bg-green-100">
+                <svg class="w-16 h-16 mx-auto text-yellow-500 mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <h2 class="text-3xl font-bold mb-4 text-green-700">
+                    Priecīgus Ziemassvētkus!
+                </h2>
+                <p class="text-lg mb-4">
+                    Jūs esat izpildījuši visus uzdevumus! Lai laimīgi un priecīgi svētki!
+                </p>
+                <div class="space-x-4">
+                    <button class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded" onclick="hideCongratsModal()">
+                        Aizvērt
+                    </button>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded" onclick="resetGame()">
+                        Sākt no jauna
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
